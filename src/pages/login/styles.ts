@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Button, StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
 import {themas} from "../../global/themes"
 
@@ -25,7 +25,8 @@ export const style = StyleSheet.create( {
     boxBottom: {
         height: Dimensions.get('window').height / 3,
         width: '100%',
-        backgroundColor: 'blue',
+        alignItems: 'center',
+        //backgroundColor: 'blue',
     },
     logo: {
         width: 80,
@@ -51,12 +52,45 @@ export const style = StyleSheet.create( {
         alignItems: 'center',
         paddingHorizontal: 5,
         backgroundColor: themas.colors.lightGray,
-        borderColor: themas.colors.lightGray
+        borderColor: themas.colors.lightGray,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.29,
+        shadowRadius: 4.65,
+        elevation: 7,
     },
     input: {
         height: '100%',
         width: '90%',
         // backgroundColor: 'red',
         borderRadius: 40
-    }
+    },
+    button: {
+        width: 250,
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: themas.colors.primary,
+        borderRadius: 40,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.29,
+        shadowRadius: 4.65,
+        elevation: 7,
+    },
+    textbutton:{
+        fontSize: 16,
+        color: '#FFF',
+        fontWeight: 'bold'
+    },
+    textBotton: {
+        fontSize: 16,
+        color: themas.colors.gray
+    },
 })
