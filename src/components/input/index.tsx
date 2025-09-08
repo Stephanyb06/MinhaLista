@@ -1,4 +1,4 @@
-import React, { ForwardedRef ,forwardRef , Fragment } from "react";
+import React, { ForwardedRef, forwardRef, Fragment } from "react";
 import {View, Text, TextInput, TextInputProps, TouchableOpacity} from 'react-native';
 import { style } from "./style";
 // import {MaterialIcons} from '@expo/vector-icons';
@@ -45,7 +45,7 @@ export const Input = forwardRef<TextInput, Props>((Props, ref: ForwardedRef <Tex
 
     return (
         <Fragment>
-            <Text style={ style.titleInput}>{title}</Text>
+            {title && <Text style={ style.titleInput}>{title}</Text>}
             <View style={[style.boxInput, {paddingLeft: calculateSizePaddingLeft()}]}>
                 {IconLeft && IconLeftName && (
                     <TouchableOpacity onPress={onIconLeftPress} style={style.Button}>
