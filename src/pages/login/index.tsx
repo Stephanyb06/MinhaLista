@@ -30,21 +30,12 @@ export default function Login() {
 
             console.log("Logou!!!!!!!!!!!!!!!!!!!!!!");
 
-            setTimeout(() => {
-                if (email == 'ste@gmail.com' && password == '12345678') {
-                    Alert.alert('Logado com sucesso!');
-                } else {
-                    Alert.alert('Usuário não encontrado!');
-                }
-                setLoading(false)
-            }, 3000)
         } catch (error) {
             console.log(error);
         } finally {
             setLoading(false);
         }
     }
-
     return (
         <View style={style.container}>
             <View style={style.boxTop}>
