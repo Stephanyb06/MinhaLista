@@ -26,7 +26,7 @@ export default function Login() {
                 return Alert.alert('Atenção', 'Informe os campos obrigatórios!');
             }
 
-            navigation.navigate("BottomRoutes")
+            navigation.reset({routes: [{name: "BottomRoutes"}]})
 
             console.log("Logou!!!!!!!!!!!!!!!!!!!!!!");
 
