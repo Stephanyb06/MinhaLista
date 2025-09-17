@@ -9,9 +9,9 @@ export const AuthProviderList = (props: any): any => {
         Alert.alert('Atenção, modal aberto!')
     }
     return (
-         <AuthContextList.Provider value = {{ onOpen }}>
+        <AuthContextList.Provider value={{ onOpen }}>
             {props.children}
-         </AuthContextList.Provider>
+        </AuthContextList.Provider>
     )
 }
 

@@ -18,7 +18,7 @@ export const style = StyleSheet.create({
         shadowRadius: 4.65,
         elevation: 7,
     },
-    textbutton:{
+    textbutton: {
         fontSize: 16,
         color: '#FFF',
         fontWeight: 'bold'

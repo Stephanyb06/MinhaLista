@@ -1,8 +1,8 @@
 import { Button, StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
-import {themas} from "../../global/themes"
+import { themas } from "../../global/themes"
 
-export const style = StyleSheet.create( {
+export const style = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
@@ -37,7 +37,7 @@ export const style = StyleSheet.create( {
         marginTop: 48,
         fontSize: 18
     },
-    
+
     button: {
         width: 250,
         height: 50,
@@ -54,7 +54,7 @@ export const style = StyleSheet.create( {
         shadowRadius: 4.65,
         elevation: 7,
     },
-    textbutton:{
+    textbutton: {
         fontSize: 16,
         color: '#FFF',
         fontWeight: 'bold'

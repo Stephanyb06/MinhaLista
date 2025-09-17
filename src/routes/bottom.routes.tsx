@@ -10,20 +10,20 @@ export default function BottomRoutes() {
     return (
         <AuthProviderList>
             <Tab.Navigator
-        screenOptions={{
-            headerShown:false
-        }}
-        tabBar={props=><CustomTabBar {...props} />}
-        >
-            <Tab.Screen
-            name="List"
-            component={List}
-            />
-            <Tab.Screen
-            name="User"
-            component={User}
-            />
-        </Tab.Navigator>
+                screenOptions={{
+                    headerShown: false
+                }}
+                tabBar={props => <CustomTabBar {...props} />}
+            >
+                <Tab.Screen
+                    name="List"
+                    component={List}
+                />
+                <Tab.Screen
+                    name="User"
+                    component={User}
+                />
+            </Tab.Navigator>
         </AuthProviderList>
     )
 }
