@@ -4,6 +4,8 @@ import { style } from './styles';
 import { Input } from '../../components/input';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Ball } from '../../components/Ball';
+import { Flag } from '../../components/Flag';
+import { themas } from '../../global/themes';
 
 type PropCard = {
     item: number,
@@ -40,13 +42,13 @@ export default function List() {
             <TouchableOpacity style={style.card}>
                 <View style={style.rowCard}>
                     <View style={style.rowCardLeft}>
-                    <Ball color="red" />
-                    <View>
-                        <Text>{item.title}</Text>
-                        <Text>{item.description}</Text>
+                        <Ball color="red" />
+                        <View>
+                            <Text>{item.title}</Text>
+                            <Text>{item.description}</Text>
+                        </View>
                     </View>
-                    </View>
-                    {/* <Flag /> */}
+                    <Flag caption="Urgente" color={themas.colors.red} />
                 </View>
             </TouchableOpacity>
         )
