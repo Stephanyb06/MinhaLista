@@ -94,6 +94,7 @@ export const AuthProviderList = (props: any): any => {
                         numberOfLines={5}
                         value={description}
                         onChangeText={setDescription}
+                        textAlignVertical="top"
                     />
                 </View>
                 <View style={{ width: '40%' }}>
@@ -111,13 +112,13 @@ export const AuthProviderList = (props: any): any => {
                             onPress={() => setShowDatePicker(true)}
                             />
                         </TouchableOpacity>
-                        <TouchableOpacity style={{width: 120}}>
+                        <TouchableOpacity style={{width: 120}} onPress={() => setShowTimePicker(true)}>
                             <Input
                             title="Hora Limite"
                             labelStyle={styles.label}
                             editable={false}
-                            value={selectedTime.toLocaleDateString()}
-                            onPress={() => setShowDatePicker(true)}
+                            value={selectedTime.toLocaleTimeString()}
+                            onPress={() => setShowTimePicker(true)}
                             />
                         </TouchableOpacity>
                     </View>
@@ -131,7 +132,7 @@ export const AuthProviderList = (props: any): any => {
                         onDateChange={handleTimeChange}
                         setShow={setShowTimePicker}
                         show={showTimePicker}
-                        type={'date'}
+                        type={'time'}
                     />
                 </View>
                 <View style={styles.containerFlag}>
