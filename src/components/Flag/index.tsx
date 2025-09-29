@@ -15,7 +15,7 @@ export function Flag({ ...rest }: Props) {
             { backgroundColor: rest?.color },
              rest?.selected && {borderWidth: 2}
              ]}
-             >
+        >
             <Text style={{ color: '#FFF' }}>{rest.caption}</Text>
         </TouchableOpacity>
     )
