@@ -75,7 +75,7 @@ export const AuthProviderList = (props: any): any => {
                         <AntDesign
                             name="check"
                             size={30}
-                            
+
                         />
                     </TouchableOpacity>
                 </View>
@@ -101,6 +101,26 @@ export const AuthProviderList = (props: any): any => {
                         title="Tempo Limite:"
                         labelStyle={styles.label}
                     /> */}
+                    <View style={{flexDirection: 'row', gap: 10, width: '100%'}}>
+                        <TouchableOpacity onPress={() => setShowDatePicker(true)} style={{width: 200}}>
+                            <Input 
+                            title="Data Limite"
+                            labelStyle={styles.label}
+                            editable={false}
+                            value={selectedDate.toLocaleDateString()}
+                            onPress={() => setShowDatePicker(true)}
+                            />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{width: 120}}>
+                            <Input
+                            title="Hora Limite"
+                            labelStyle={styles.label}
+                            editable={false}
+                            value={selectedTime.toLocaleDateString()}
+                            onPress={() => setShowDatePicker(true)}
+                            />
+                        </TouchableOpacity>
+                    </View>
                     <CustomDateTimePicker
                         onDateChange={handleDateChange}
                         setShow={setShowDatePicker}
