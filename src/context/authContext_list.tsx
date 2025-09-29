@@ -75,6 +75,7 @@ export const AuthProviderList = (props: any): any => {
                         <AntDesign
                             name="check"
                             size={30}
+                            
                         />
                     </TouchableOpacity>
                 </View>
