@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useRef, useEffect, useState } from "react";
-import { Dimensions, Text, View, StyleSheet, Touchable, TouchableOpacity, KeyboardAvoidingView, Platform } from "react-native";
+import { Dimensions, Text, View, StyleSheet, Touchable, TouchableOpacity, KeyboardAvoidingView, Platform, Alert } from "react-native";
 import { MaterialIcons, AntDesign } from '@expo/vector-icons';
 import { Modalize } from "react-native-modalize";
 import { Input } from "../components/input";
@@ -57,7 +57,11 @@ export const AuthProviderList = (props: any): any => {
     const handleTimeChange = (date) => {
         setSelectedTime(date);
     }
-    const handleSave = () => {
+    const handleSave = async () => {
+        if (!title || !description || !selectedFlag) {
+            return Alert.alert('Antenção', 'Preencha os campos corretamente!');
+        }
+        try {
         const newItem = {
             item: Date.now(),
             title,
@@ -71,8 +75,14 @@ export const AuthProviderList = (props: any): any => {
                 selectedTime.getMinutes()
             ).toISOString(),
         }
-        console.log(newItem)
+
+        await AsyncStorage.setItem('tasklist', JSON.stringify(newItem))
+    } catch (error) {
+        console.log("Error ao salvar o item", error)
     }
+}
+
+
     const _container = () => {
         return (
             <KeyboardAvoidingView
