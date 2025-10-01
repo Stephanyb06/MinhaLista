@@ -20,11 +20,12 @@ export const AuthProviderList = (props: any): any => {
     const modalizeRef = useRef<Modalize>(null);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [selectedFlag, setSelected] = useState('Urgente');
+    const [selectedFlag, setSelectedFlag] = useState('Urgente');
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedTime, setSelectedTime] = useState(new Date());
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showTimePicker, setShowTimePicker] = useState(false);
+    const [item, setItem] = useState(0);
 
     const onOpen = () => {
         modalizeRef?.current?.open();
@@ -36,11 +37,15 @@ export const AuthProviderList = (props: any): any => {
     const _renderFlags = () => {
         return (
             flags.map((item, index) => (
-                <TouchableOpacity key={index}>
+                <TouchableOpacity key={index}
+                    onPress={() => {
+                        setSelectedFlag(item.caption)
+                    }}
+                >
                     <Flag
                         caption={item.caption}
                         color={item.color}
-                    //selected
+                        selected = {item.caption == selectedFlag}
                     />
                 </TouchableOpacity>
             ))
@@ -50,15 +55,21 @@ export const AuthProviderList = (props: any): any => {
         setSelectedDate(date);
     }
     const handleTimeChange = (date) => {
-        setSelected(date);
+        setSelectedTime(date);
     }
     const handleSave = () => {
         const newItem = {
-            item: 0,
-            title: 'Titulo',
-            description: 'Descrição',
-            flags: 'Flags',
-            timeLimite: '01.02.2025'
+            item: Date.now(),
+            title,
+            description,
+            flags: selectedFlag,
+            timeLimite: new Date (
+                selectedDate.getFullYear(),
+                selectedDate.getMonth(),
+                selectedDate.getDate(),
+                selectedTime.getHours(),
+                selectedTime.getMinutes()
+            ).toISOString(),
         }
         console.log(newItem)
     }
@@ -82,7 +93,6 @@ export const AuthProviderList = (props: any): any => {
                         <AntDesign
                             name="check"
                             size={30}
-
                         />
                     </TouchableOpacity>
                 </View>
@@ -109,23 +119,23 @@ export const AuthProviderList = (props: any): any => {
                         title="Tempo Limite:"
                         labelStyle={styles.label}
                     /> */}
-                    <View style={{flexDirection: 'row', gap: 10, width: '100%'}}>
-                        <TouchableOpacity onPress={() => setShowDatePicker(true)} style={{width: 200}}>
-                            <Input 
-                            title="Data Limite"
-                            labelStyle={styles.label}
-                            editable={false}
-                            value={selectedDate.toLocaleDateString()}
-                            onPress={() => setShowDatePicker(true)}
+                    <View style={{ flexDirection: 'row', gap: 10, width: '100%' }}>
+                        <TouchableOpacity onPress={() => setShowDatePicker(true)} style={{ width: 200 }}>
+                            <Input
+                                title="Data Limite"
+                                labelStyle={styles.label}
+                                editable={false}
+                                value={selectedDate.toLocaleDateString()}
+                                onPress={() => setShowDatePicker(true)}
                             />
                         </TouchableOpacity>
-                        <TouchableOpacity style={{width: 120}} onPress={() => setShowTimePicker(true)}>
+                        <TouchableOpacity style={{ width: 120 }} onPress={() => setShowTimePicker(true)}>
                             <Input
-                            title="Hora Limite"
-                            labelStyle={styles.label}
-                            editable={false}
-                            value={selectedTime.toLocaleTimeString()}
-                            onPress={() => setShowTimePicker(true)}
+                                title="Hora Limite"
+                                labelStyle={styles.label}
+                                editable={false}
+                                value={selectedTime.toLocaleTimeString()}
+                                onPress={() => setShowTimePicker(true)}
                             />
                         </TouchableOpacity>
                     </View>
