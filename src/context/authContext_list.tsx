@@ -45,7 +45,7 @@ export const AuthProviderList = (props: any): any => {
                     <Flag
                         caption={item.caption}
                         color={item.color}
-                        selected = {item.caption == selectedFlag}
+                        selected={item.caption == selectedFlag}
                     />
                 </TouchableOpacity>
             ))
@@ -62,25 +62,30 @@ export const AuthProviderList = (props: any): any => {
             return Alert.alert('Antenção', 'Preencha os campos corretamente!');
         }
         try {
-        const newItem = {
-            item: Date.now(),
-            title,
-            description,
-            flags: selectedFlag,
-            timeLimite: new Date (
-                selectedDate.getFullYear(),
-                selectedDate.getMonth(),
-                selectedDate.getDate(),
-                selectedTime.getHours(),
-                selectedTime.getMinutes()
-            ).toISOString(),
-        }
+            const newItem = {
+                item: Date.now(),
+                title,
+                description,
+                flags: selectedFlag,
+                timeLimite: new Date(
+                    selectedDate.getFullYear(),
+                    selectedDate.getMonth(),
+                    selectedDate.getDate(),
+                    selectedTime.getHours(),
+                    selectedTime.getMinutes()
+                ).toISOString(),
+            }
 
-        await AsyncStorage.setItem('tasklist', JSON.stringify(newItem))
-    } catch (error) {
-        console.log("Error ao salvar o item", error)
+            const storageData = await AsyncStorage.getItem('tasklist');
+            console.log(storageData)
+            let tasklist = storageData ? JSON.parse(storageData) : [];
+            tasklist.push(newItem);
+            await AsyncStorage.setItem('tasklist', JSON.stringify(tasklist))
+
+        } catch (error) {
+            console.log("Error ao salvar o item", error)
+        }
     }
-}
 
 
     const _container = () => {
