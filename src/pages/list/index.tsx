@@ -13,7 +13,7 @@ import { Directions, Swipeable } from "react-native-gesture-handler";
 
 export default function List() {
 
-    const { taskList, handleDelete, handleEdit } = useContext<AuthContextType>(AuthContextList)
+    const { taskList, handleDelete, handleEdit, filter } = useContext<AuthContextType>(AuthContextList)
     const swipeableRefs = useRef([])
 
     const renderRightActions = () => (
@@ -79,11 +79,12 @@ export default function List() {
         <View style={style.container}>
             <View style={style.header}>
                 <Text style={style.greeting}>Bom dia,
-                    <Text style={{ fontWeight: 'bold' }}> Leonardo Pires</Text></Text>
+                    <Text style={{ fontWeight: 'bold' }}> Stephany Braga</Text></Text>
                 <View style={style.boxInput}>
                     <Input
                         IconLeft={MaterialIcons}
                         IconLeftName="search"
+                        onChangeText={(t) =>filter(t)}
                     />
                 </View>
             </View>
